@@ -19,6 +19,10 @@ jobs:
       with:
         java-version: 17
         distribution: 'temurin'
+
+    - name: Change wrapper permissions
+      run: chmod +x ./gradlew
+      
     - name: Build with Gradle
       uses: gradle/actions/setup-gradle@v3
       
