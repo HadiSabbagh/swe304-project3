@@ -21,6 +21,9 @@ jobs:
         distribution: 'temurin'
     - name: Build with Gradle
       uses: gradle/actions/setup-gradle@v3
+      
+    - name: Bootjar
+      run: ./gradlew bootjar
 
     - name: Login to DockerHub
       uses: docker/login-action@v3
