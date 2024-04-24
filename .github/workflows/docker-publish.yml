@@ -28,9 +28,6 @@ jobs:
         username: ${{secrets.DOCKERHUB_USERNAME}}
         password: ${{secrets.DOCKERHUB_PASSWORD}}
 
-    - name: Docker build
-      uses: docker/setup-build-action@v3
-
     - name: Build & Push
       uses: docker/build-push-action@v3
       with:
