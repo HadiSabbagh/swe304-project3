@@ -20,15 +20,23 @@ jobs:
         java-version: 17
         distribution: 'temurin'
 
-    - name: Save secrets to file
-      run: |
-          echo "access=${{secrets.ACCESS_KEY}}" >> aws.properties
-          echo "key=${{secrets.SECRET_KEY}}" >> aws.properties
-          echo "bucket=${{secrets.BUCKET}}" >> aws.properties
+    
+    - name: Write value to Properties-file
+      uses: christian-draeger/write-properties@1.1.0
+      with:
+        path: './src/main/resources/aws.properties'
+        property: |
+          'ACCESS_KEY'
+          'SECRET_KEY'
+          'BUCKET'
+        value: |
+          '${{secrets.ACCESS_KEY}}'
+          '${{secrets.SECRET_KEY}}'
+          '${{secrets.BUCKET}}'
 
-    - name: Check for changes in aws.properties
-      run: |
-        git diff --exit-code aws.properties || (echo "aws.properties has changed" && exit 1)
+    - name: Display aws.properties content
+      run: cat aws.properties
+
 
     - name: Change wrapper permissions
       run: chmod +x ./gradlew
