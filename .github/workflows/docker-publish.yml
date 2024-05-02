@@ -33,7 +33,7 @@ jobs:
         bucket: ${{ secrets.BUCKET }}
         run: |
           cat aws.properties
-      run: ./gradlew bootjar
+          ./gradlew bootjar
 
     - name: Login to DockerHub
       uses: docker/login-action@v3
