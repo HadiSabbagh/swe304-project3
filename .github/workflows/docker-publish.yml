@@ -31,6 +31,8 @@ jobs:
         access: ${{ secrets.ACCESS_KEY }}
         key: ${{ secrets.SECRET_KEY }}
         bucket: ${{ secrets.BUCKET }}
+        run: |
+          cat aws.properties
       run: ./gradlew bootjar
 
     - name: Login to DockerHub
