@@ -20,20 +20,13 @@ jobs:
         java-version: 17
         distribution: 'temurin'
 
-    
-    - name: Write value to Properties-file
-      uses: christian-draeger/write-properties@1.1.0
+    - name: Read/Write Properties File
+      uses: kurt-code/gha-properties@v0.0.1
+      id: read-properties
       with:
-        path: './src/main/resources/aws.properties'
-        property: |
-          'ACCESS_KEY'
-          'SECRET_KEY'
-          'BUCKET'
-        value: |
-          '${{secrets.ACCESS_KEY}}'
-          '${{secrets.SECRET_KEY}}'
-          '${{secrets.BUCKET}}'
-
+        operation: 'write'
+        file-path: './src/main/resources/aws.properties'
+        key-value-pairs: '{"access": "${{secrets.ACCESS_KEY}}", "key": "${{secrets.SECRET_KEY}}", "bucket": "${{secrets.BUCKET}}"}'
 
 
     - name: Change wrapper permissions
