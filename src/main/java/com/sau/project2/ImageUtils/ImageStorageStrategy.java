@@ -7,6 +7,12 @@ import java.io.IOException;
 
 public interface ImageStorageStrategy {
 
+    /**
+     * @param file
+     * Save the image (in case the app is running locally, it is a path to the image. For cloud, it is the image's name(key))
+     * @return path or key
+     * @throws IOException
+     */
     String saveImage(MultipartFile file) throws IOException;
 
 
