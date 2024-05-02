@@ -13,10 +13,10 @@ import org.springframework.context.annotation.PropertySource;
 @Configuration
 @PropertySource("classpath:aws.properties")
 public class S3Config {
-    @Value("${ACCESS_KEY}")
+    @Value("${access}")
     private String awsAccessKey;
 
-    @Value("${SECRET_KEY}")
+    @Value("${key}")
     private String awsSecretKey;
 
 
