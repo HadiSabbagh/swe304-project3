@@ -26,6 +26,10 @@ jobs:
           echo "key=${{secrets.SECRET_KEY}}" >> aws.properties
           echo "bucket=${{secrets.BUCKET}}" >> aws.properties
 
+    - name: Check for changes in aws.properties
+      run: |
+        git diff --exit-code aws.properties || (echo "aws.properties has changed" && exit 1)
+
     - name: Change wrapper permissions
       run: chmod +x ./gradlew
       
