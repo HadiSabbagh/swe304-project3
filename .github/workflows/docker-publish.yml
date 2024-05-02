@@ -19,9 +19,6 @@ jobs:
       with:
         java-version: 17
         distribution: 'temurin'
-        access: ${{ secrets.ACCESS_KEY }}
-        key: ${{ secrets.SECRET_KEY }}
-        bucket: ${{ secrets.BUCKET }}
 
     - name: Change wrapper permissions
       run: chmod +x ./gradlew
@@ -30,7 +27,11 @@ jobs:
       uses: gradle/actions/setup-gradle@v3
       
     - name: Bootjar
-      run: ./gradlew bootjar
+      with:
+        access: ${{ secrets.ACCESS_KEY }}
+        key: ${{ secrets.SECRET_KEY }}
+        bucket: ${{ secrets.BUCKET }}
+        run: ./gradlew bootjar  
 
     - name: Login to DockerHub
       uses: docker/login-action@v3
