@@ -20,19 +20,18 @@ jobs:
         java-version: 17
         distribution: 'temurin'
 
-    - name: Change wrapper permissions
-      run: chmod +x ./gradlew
-      
-    - name: Build with Gradle
-      uses: gradle/actions/setup-gradle@v3
-      with:
-        properties: '[{"aws.properties": "aws.properties"}]'
-        
     - name: Save secrets to file
       run: |
           echo "access=${{secrets.ACCESS_KEY}}" >> aws.properties
           echo "key=${{secrets.SECRET_KEY}}" >> aws.properties
           echo "bucket=${{secrets.BUCKET}}" >> aws.properties
+
+    - name: Change wrapper permissions
+      run: chmod +x ./gradlew
+      
+    - name: Build with Gradle
+      uses: gradle/actions/setup-gradle@v3
+        
 
     - name: Bootjar
       run: ./gradlew bootjar  
