@@ -34,8 +34,6 @@ jobs:
           '${{secrets.SECRET_KEY}}'
           '${{secrets.BUCKET}}'
 
-    - name: Display aws.properties content
-      run: cat aws.properties
 
 
     - name: Change wrapper permissions
