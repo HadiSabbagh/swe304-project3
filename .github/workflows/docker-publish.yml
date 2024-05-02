@@ -27,6 +27,10 @@ jobs:
       uses: gradle/actions/setup-gradle@v3
       
     - name: Bootjar
+      env:
+        ACCESS_KEY: ${{ secrets.ACCESS_KEY }}
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        BUCKET: ${{ secrets.BUCKET }}
       run: ./gradlew bootjar
 
     - name: Login to DockerHub
