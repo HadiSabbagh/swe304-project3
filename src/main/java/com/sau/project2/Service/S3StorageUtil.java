@@ -20,7 +20,7 @@ public class S3StorageUtil implements ImageStorageStrategy {
         this.s3Client = s3Client;
     }
 
-    @Value("${aws.bucket.name}")
+    @Value("${bucket}")
     private String bucketName;
 
     @Override
