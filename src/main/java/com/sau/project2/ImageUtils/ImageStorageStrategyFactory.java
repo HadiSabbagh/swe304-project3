@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import java.util.Map;
 
 @Component
+//This factory is responsible for setting the storageUtil class at runtime
 public class ImageStorageStrategyFactory {
 
 
