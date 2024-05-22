@@ -10,6 +10,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
+/**
+ * Build AWS client with secret credentials.
+ */
 @Configuration
 @PropertySource("classpath:aws.properties")
 public class S3Config {
